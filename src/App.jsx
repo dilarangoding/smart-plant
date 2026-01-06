@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { database, ref, onValue, set } from './firebase';
 
-const SOIL_KERING_MAX = 60;
-const SOIL_NORMAL_MAX = 80;
+const SOIL_KERING_MAX = 20;
+const SOIL_NORMAL_MAX = 75;
 
 function App() {
   const [dataSensor, setDataSensor] = useState({
