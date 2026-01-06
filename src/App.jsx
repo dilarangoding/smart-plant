@@ -130,21 +130,32 @@ function App() {
             Data Sensor
           </div>
 
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '16px'
-          }}>
-            <div style={{
-              backgroundColor: 'white',
-              border: '1px solid #e5e7eb',
-              borderRadius: '8px',
-              padding: '24px 20px'
-            }}>
-              <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '8px' }}>Suhu</div>
-              <div style={{ fontSize: '32px', fontWeight: 700, color: '#1f2937' }}>
-                {dataSensor.temperature ?? '--'}
-                <span style={{ fontSize: '16px', color: '#9ca3af', marginLeft: '4px' }}>°C</span>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px' }}>
+              <div style={{
+                backgroundColor: 'white',
+                border: '1px solid #e5e7eb',
+                borderRadius: '8px',
+                padding: '20px 16px'
+              }}>
+                <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '8px' }}>Suhu</div>
+                <div style={{ fontSize: '28px', fontWeight: 700, color: '#1f2937' }}>
+                  {dataSensor.temperature ?? '--'}
+                  <span style={{ fontSize: '14px', color: '#9ca3af', marginLeft: '4px' }}>°C</span>
+                </div>
+              </div>
+
+              <div style={{
+                backgroundColor: 'white',
+                border: '1px solid #e5e7eb',
+                borderRadius: '8px',
+                padding: '20px 16px'
+              }}>
+                <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '8px' }}>Kelembaban Udara</div>
+                <div style={{ fontSize: '28px', fontWeight: 700, color: '#1f2937' }}>
+                  {dataSensor.humidity ?? '--'}
+                  <span style={{ fontSize: '14px', color: '#9ca3af', marginLeft: '4px' }}>%</span>
+                </div>
               </div>
             </div>
 
@@ -152,39 +163,44 @@ function App() {
               backgroundColor: 'white',
               border: '1px solid #e5e7eb',
               borderRadius: '8px',
-              padding: '24px 20px'
-            }}>
-              <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '8px' }}>Kelembaban Udara</div>
-              <div style={{ fontSize: '32px', fontWeight: 700, color: '#1f2937' }}>
-                {dataSensor.humidity ?? '--'}
-                <span style={{ fontSize: '16px', color: '#9ca3af', marginLeft: '4px' }}>%</span>
-              </div>
-            </div>
-
-            <div style={{
-              backgroundColor: 'white',
-              border: '1px solid #e5e7eb',
-              borderRadius: '8px',
-              padding: '24px 20px',
+              padding: '20px 16px',
               borderLeft: `4px solid ${statusTanah.color}`
             }}>
-              <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '8px' }}>
-                Kelembaban Tanah
-                <span style={{
-                  marginLeft: '8px',
-                  padding: '2px 8px',
-                  borderRadius: '4px',
-                  fontSize: '10px',
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div>
+                  <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '8px' }}>
+                    Kelembaban Tanah
+                    <span style={{
+                      marginLeft: '8px',
+                      padding: '2px 8px',
+                      borderRadius: '4px',
+                      fontSize: '10px',
+                      fontWeight: 600,
+                      backgroundColor: statusTanah.color,
+                      color: 'white'
+                    }}>
+                      {statusTanah.text}
+                    </span>
+                  </div>
+                  <div style={{ fontSize: '28px', fontWeight: 700, color: '#1f2937' }}>
+                    {dataSensor.soil_moisture ?? '--'}
+                    <span style={{ fontSize: '14px', color: '#9ca3af', marginLeft: '4px' }}>%</span>
+                  </div>
+                </div>
+                <div style={{
+                  width: '60px',
+                  height: '60px',
+                  borderRadius: '50%',
+                  border: `4px solid ${statusTanah.color}`,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '12px',
                   fontWeight: 600,
-                  backgroundColor: statusTanah.color,
-                  color: 'white'
+                  color: statusTanah.color
                 }}>
-                  {statusTanah.text}
-                </span>
-              </div>
-              <div style={{ fontSize: '32px', fontWeight: 700, color: '#1f2937' }}>
-                {dataSensor.soil_moisture ?? '--'}
-                <span style={{ fontSize: '16px', color: '#9ca3af', marginLeft: '4px' }}>%</span>
+                  {dataSensor.soil_moisture ?? '--'}%
+                </div>
               </div>
             </div>
           </div>
